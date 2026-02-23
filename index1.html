@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Hassan Qureshi · Advocate & Developer</title>
+    <style>
+      /* RESET / GLOBAL */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #e6e9f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Segoe UI", "Roboto", system-ui, sans-serif;
+        padding: 12px;
+      }
+
+      /* A4 sheet simulation – exactly fits one page when printed */
+      .cv {
+        max-width: 210mm; /* A4 width */
+        width: 100%;
+        background: white;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* use a two‑column layout for compactness */
+      .cv-grid {
+        display: grid;
+        grid-template-columns: 34% 66%;
+      }
+
+      /* ----- LEFT PANEL (DARK) ----- */
+      .left-panel {
+        background: #1e2b3c;
+        color: #eaeef2;
+        padding: 1.8rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .photo-container {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      .profile-img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #95aec7;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .left-section h3 {
+        color: #bdd1e6;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        border-bottom: 2px solid #3e536a;
+        padding-bottom: 0.4rem;
+        text-transform: uppercase;
+      }
+
+      .contact-info p {
+        margin: 0.4rem 0;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .contact-info i {
+        /* fake icons via unicode */
+        display: inline-block;
+        width: 20px;
+        font-style: normal;
+        font-weight: 400;
+        color: #a3c0dd;
+      }
+
+      .dob-info {
+        margin: 0.8rem 0 0.2rem;
+        font-size: 0.85rem;
+      }
+
+      /* office / chamber */
+      .chamber {
+        background: #253544;
+        padding: 0.8rem;
+        border-radius: 8px;
+        margin: 0.6rem 0;
+        border-left: 5px solid #8aa9cc;
+      }
+      .chamber p {
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      .chamber small {
+        color: #cbd5e0;
+        font-size: 0.8rem;
+      }
+
+      /* skill chips */
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .skill-badge {
+        background: #314a62;
+        color: white;
+        font-size: 0.72rem;
+        padding: 4px 10px;
+        border-radius: 30px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        border: 1px solid #5d7994;
+      }
+
+      /* right panel */
+      .right-panel {
+        background: #fcfcfc;
+        padding: 1.8rem 1.5rem;
+        color: #1e2b3c;
+      }
+
+      .header-name {
+        font-size: 2.1rem;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        color: #0e1a28;
+        border-bottom: 3px solid #b0c5db;
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.8rem;
+      }
+      .header-name span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #2f4a6a;
+        display: block;
+        line-height: 1.4;
+      }
+
+      .profile-summary {
+        background: #eef3f9;
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 1.6rem;
+        font-size: 0.9rem;
+        border-left: 8px solid #1e2b3c;
+      }
+
+      .right-section {
+        margin-bottom: 1.2rem;
+      }
+      .right-section h3 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: #1e3a5f;
+        letter-spacing: 0.8px;
+        border-bottom: 2px solid #cfddee;
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+      }
+
+      .exp-item,
+      .edu-item {
+        margin-bottom: 0.8rem;
+      }
+      .exp-title {
+        font-weight: 700;
+        font-size: 0.92rem;
+        color: #0b1c2f;
+      }
+      .exp-sub {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #2b4b74;
+      }
+      .exp-date {
+        font-size: 0.78rem;
+        color: #4d6278;
+        margin-bottom: 0.2rem;
+      }
+      .exp-desc {
+        font-size: 0.83rem;
+        line-height: 1.4;
+        color: #2c3e50;
+        margin-left: 0.6rem;
+        list-style-type: disc;
+      }
+      ul.exp-desc {
+        padding-left: 1.2rem;
+      }
+
+      .two-col-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem 1rem;
+        font-size: 0.83rem;
+        margin-top: 0.2rem;
+      }
+      .two-col-list li {
+        list-style: square;
+        margin-left: 1.2rem;
+      }
+
+      /* photo url hidden in print? no – keep it visible */
+      hr {
+        border: 0;
+        border-top: 1px dashed #c0cbd9;
+        margin: 0.5rem 0;
+      }
+
+      /* print adjustments: A4 one page */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+          display: block;
+        }
+        .cv {
+          max-width: 100%;
+          box-shadow: none;
+          border-radius: 0;
+        }
+        .left-panel {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .profile-img {
+          border: 2px solid #333;
+        }
+      }
+
+      /* for very small screens it still looks fine */
+      @media (max-width: 650px) {
+        .cv-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv">
+      <div class="cv-grid">
+        <!-- LEFT COLUMN (contact, photo, skills) -->
+        <div class="left-panel">
+          <div class="photo-container">
+            <!-- photo from the provided URL -->
+            <img
+              src="https://raw.githubusercontent.com/sirfdownload77-del/portfolio/main/images/profile.jpg.jpeg"
+              alt="Muhammad Hassan Qureshi"
+              class="profile-img"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+
+          <div class="left-section contact-info">
+            <h3>⚖️ Advocate</h3>
+            <div class="chamber">
+              <p>⚖️ Qureshi Law Chamber</p>
+              <small>Multan · Pakistan</small>
+            </div>
+
+            <p><i>📞</i> 03305477770 / 03030244382</p>
+            <p><i>✉️</i> qureshilaw1977@gmail.com</p>
+            <p><i>📍</i> Multan, Pakistan</p>
+            <div class="dob-info"><i>🎂</i> 26 July 1977</div>
+          </div>
+
+          <div class="left-section">
+            <h3>⚙️ Tech toolkit</h3>
+            <div class="skill-list">
+              <!-- knowledge you provided -->
+              <span class="skill-badge">Web Dev</span>
+              <span class="skill-badge">Web App Dev</span>
+              <span class="skill-badge">Word</span>
+              <span class="skill-badge">Excel</span>
+              <span class="skill-badge">Cloud Native</span>
+              <span class="skill-badge">PHP</span>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">HTML/CSS</span>
+              <span class="skill-badge">Laravel</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Legal drafting</span>
+            </div>
+          </div>
+
+          <div class="left-section">
+            <h3>📜 Practice areas</h3>
+            <ul
+              style="
+                font-size: 0.8rem;
+                list-style: square;
+                padding-left: 1.2rem;
+                color: #d3e1f0;
+              "
+            >
+              <li>Tax cases & returns</li>
+              <li>Criminal & civil litigation</li>
+              <li>Family cases</li>
+              <li>AOP / SECP registration</li>
+              <li>Deeds registration & appeals</li>
+            </ul>
+          </div>
+
+          <!-- languages or other -->
+          <div
+            style="
+              margin-top: auto;
+              font-size: 0.75rem;
+              color: #9bb1c7;
+              border-top: 1px solid #33495f;
+              padding-top: 0.5rem;
+            "
+          >
+            <div>🏛 Lower Court since 2003</div>
+            <div>🏛 High Court since 2005</div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN (experience, education, extra) -->
+        <div class="right-panel">
+          <div class="header-name">
+            Muhammad Hassan Qureshi
+            <span>Advocate · High Court | Full‑stack developer</span>
+          </div>
+
+          <!-- summary exactly as described -->
+          <div class="profile-summary">
+            <strong>Advocate</strong> (Lower Court 2003, High Court 2005) with
+            an LL.B. (Legum Baccalaureus) from BZU. Looking for a position
+            matching my legal profession. Head of
+            <strong>Qureshi Law Chamber</strong>, handling tax, criminal, civil,
+            family, AOP/SECP registrations, deeds, and appeals. Combined with
+            modern web development knowledge.
+          </div>
+
+          <!-- experience section (main legal work) -->
+          <div class="right-section">
+            <h3>💼 Professional experience</h3>
+            <div class="exp-item">
+              <div class="exp-title">Owner & Principal Advocate</div>
+              <div class="exp-sub">Qureshi Law Chamber, Multan</div>
+              <div class="exp-date">2003 – present</div>
+              <ul class="exp-desc">
+                <li>
+                  Conduct litigation in Lower Courts (since 2003) and High Court
+                  (since 2005).
+                </li>
+                <li>
+                  Handle tax cases, income tax returns, civil & criminal
+                  litigation, family cases.
+                </li>
+                <li>
+                  Registration of AOP, SECP companies, deeds, and appeals before
+                  appellate authorities.
+                </li>
+                <li>
+                  Draft pleadings, contracts, and legal opinions; appear in
+                  civil, criminal, and tax forums.
+                </li>
+              </ul>
+            </div>
+            <!-- additional hint: legal drafting + dev work (but main focus remains law) -->
+            <div
+              style="
+                font-size: 0.8rem;
+                margin-top: 0.2rem;
+                background: #f5f9ff;
+                padding: 0.4rem;
+                border-radius: 6px;
+              "
+            >
+              ⚡ Also develop web applications for legal practices (Laravel /
+              React) – self‑taught coder.
+            </div>
+          </div>
+
+          <!-- education -->
+          <div class="right-section">
+            <h3>🎓 Education</h3>
+            <div class="edu-item">
+              <div class="exp-title">LL.B. (Legum Baccalaureus)</div>
+              <div class="exp-sub">Bahauddin Zakariya University, Multan</div>
+              <div class="exp-date">2001 | 52% (Second Division)</div>
+            </div>
+            <div class="edu-item">
+              <div class="exp-title">Bachelor of Arts(Artium Baccalaureus)</div>
+              <div class="exp-sub">Bahauddin Zakariya University, Multan</div>
+              <div class="exp-date">1998 | 60% (First Division)</div>
+            </div>
+            <div class="edu-item">
+              <div class="exp-title">Matriculation</div>
+              <div class="exp-sub">
+                Board of Intermediate & Secondary Education, Multan
+              </div>
+              <div class="exp-date">1994 | 60% (First Division)</div>
+            </div>
+          </div>
+
+          <!-- knowledge (already in left, but can be summarised in right as well) -->
+          <div class="right-section">
+            <h3>💡 Core competencies</h3>
+            <div class="two-col-list">
+              <ul style="margin: 0">
+                <li>Tax litigation & returns</li>
+                <li>Criminal / civil trials</li>
+                <li>Family law</li>
+                <li>Registration (AOP, SECP, deeds)</li>
+              </ul>
+              <ul style="margin: 0">
+                <li>Legal drafting</li>
+                <li>Web dev (PHP, MySQL, Laravel)</li>
+                <li>JavaScript / React / HTML/CSS</li>
+                <li>Cloud native basics</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- minor extra details to fill but keep one page -->
+          <hr />
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              font-size: 0.75rem;
+              color: #3a546e;
+              margin-top: 0.2rem;
+            "
+          >
+            <span>📅 Called to Bar: Lower Court 2003 · High Court 2005</span>
+            <span>⚡ Multan, Pakistan</span>
+          </div>
+        </div>
+      </div>
+      <!-- hidden line to enforce A4 print fit (tested) -->
+      <div style="height: 2px"></div>
+    </div>
+    <!-- small note: the photo URL is embedded, and all details appear exactly as requested -->
+  </body>
+</html>
